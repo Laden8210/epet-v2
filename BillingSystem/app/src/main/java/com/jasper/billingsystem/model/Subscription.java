@@ -2,6 +2,8 @@ package com.jasper.billingsystem.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Subscription {
 
     @SerializedName("subscription_id")
@@ -39,6 +41,12 @@ public class Subscription {
 
     @SerializedName("snplan_fee")
     private String planFee;
+
+    @SerializedName("billing_statements")
+    private List<BillingStatements> billingStatements;
+
+    @SerializedName("subscriber")
+    private Subscriber subscriber;
 
     public Subscription() {
     }
@@ -137,5 +145,21 @@ public class Subscription {
 
     public void setPlanFee(String planFee) {
         this.planFee = planFee;
+    }
+
+    public List<BillingStatements> getBillingStatements() {
+        return billingStatements;
+    }
+
+    public void setBillingStatements(List<BillingStatements> billingStatements) {
+        this.billingStatements = billingStatements;
+    }
+
+    public Subscriber getSubscriber() {
+        return subscriber;
+    }
+
+    public void setSubscriber(Subscriber subscriber) {
+        this.subscriber = subscriber;
     }
 }

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text=""
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_receipt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12345"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Receipt Number"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2002-23-23"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Date"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1000.00"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Amount"
+        android:textAppearance="?attr/textAppearanceBody1"
+
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Advance Payment"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tv_advance_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Month Paid"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_total_amount_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Amount Paid"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp" />
+
+
+</LinearLayout>
