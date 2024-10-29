@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String DATABASE_NAME = "consumetric.db";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 16;
 
     private DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(Instance.CREATE_TABLE_FOOD_ITEM);
         sqLiteDatabase.execSQL(Instance.CREATE_TABLE_MEAL_PLAN);
         sqLiteDatabase.execSQL(Instance.CREATE_TABLE_MEAL_PLAN_FOOD_ITEM);
+        sqLiteDatabase.execSQL(Instance.CREATE_TABLE_USER);
     }
 
     @Override
@@ -40,6 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(Instance.DROP_TABLE_MEAL_PLAN);
         sqLiteDatabase.execSQL(Instance.DROP_TABLE_FOOD_ITEM);
         sqLiteDatabase.execSQL(Instance.DROP_TABLE_MEAL_PLAN_FOOD_ITEM);
+        sqLiteDatabase.execSQL(Instance.DROP_TABLE_USER);
         onCreate(sqLiteDatabase);
 
     }

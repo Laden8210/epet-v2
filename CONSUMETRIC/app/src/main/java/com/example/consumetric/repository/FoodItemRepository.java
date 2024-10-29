@@ -47,7 +47,7 @@ public class FoodItemRepository implements Repository<FoodItem> {
                             cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_NAME)),
                             cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_PORTION_SIZE)),
                             cursor.getDouble(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_KCAL)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_MEAL_TYPE)),
+
                             cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_DESCRIPTION))
 
                     );
@@ -80,7 +80,7 @@ public class FoodItemRepository implements Repository<FoodItem> {
                         cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_PORTION_SIZE)),
                         cursor.getDouble(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_KCAL)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_MEAL_TYPE)),
+
                         cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_DESCRIPTION))
                 );
                 repositoryResponse.onSuccess(foodItem);
@@ -113,7 +113,7 @@ public class FoodItemRepository implements Repository<FoodItem> {
                             cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_NAME)),
                             cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_PORTION_SIZE)),
                             cursor.getDouble(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_KCAL)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_MEAL_TYPE)),
+
                             cursor.getString(cursor.getColumnIndexOrThrow(FoodItem.COLUMN_DESCRIPTION))
                     );
                     foodItemList.add(foodItem);
@@ -138,7 +138,7 @@ public class FoodItemRepository implements Repository<FoodItem> {
         values.put(FoodItem.COLUMN_NAME, foodItem.getName());
         values.put(FoodItem.COLUMN_PORTION_SIZE, foodItem.getPortionSize());
         values.put(FoodItem.COLUMN_KCAL, foodItem.getKcal());
-        values.put(FoodItem.COLUMN_MEAL_TYPE, foodItem.getMealType());
+
         values.put(FoodItem.COLUMN_DESCRIPTION, foodItem.getDescription());
 
         try {

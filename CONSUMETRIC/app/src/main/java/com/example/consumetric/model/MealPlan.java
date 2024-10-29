@@ -33,6 +33,15 @@ public class MealPlan implements Serializable {
     }
 
 
+    public MealPlan(List<FoodItem> foodItems, boolean isCompleted, boolean isDeleted, double totalKcal, String mealType, String day) {
+        this.foodItems = foodItems;
+
+        this.isCompleted = isCompleted;
+        this.isDeleted = isDeleted;
+        this.totalKcal = totalKcal;
+        this.mealType = mealType;
+        this.day = day;
+    }
 
     public int getMealPlanId() {
         return mealPlanId;

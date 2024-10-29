@@ -16,7 +16,6 @@ public class FoodItem implements Parcelable {
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_PORTION_SIZE = "portion_size";
     public static final String COLUMN_KCAL = "kcal";
-    public static final String COLUMN_MEAL_TYPE = "mealType";
     public static final String COLUMN_DESCRIPTION = "description";
 
 
@@ -24,26 +23,26 @@ public class FoodItem implements Parcelable {
     private String name;
     private String portionSize;
     private double kcal;
-    private String mealType;
+
     private String description;
 
     public FoodItem() {
     }
 
-    public FoodItem(int foodItemId, String name, String portionSize, double kcal, String mealType, String description) {
+    public FoodItem(int foodItemId, String name, String portionSize, double kcal, String description) {
         this.foodItemId = foodItemId;
         this.name = name;
         this.portionSize = portionSize;
         this.kcal = kcal;
-        this.mealType = mealType;
+
         this.description = description;
     }
 
-    public FoodItem(String name, String portionSize, double kcal, String mealType, String description) {
+    public FoodItem(String name, String portionSize, double kcal, String description) {
         this.name = name;
         this.portionSize = portionSize;
         this.kcal = kcal;
-        this.mealType = mealType;
+
         this.description = description;
     }
 
@@ -52,7 +51,7 @@ public class FoodItem implements Parcelable {
         name = in.readString();
         portionSize = in.readString();
         kcal = in.readDouble();
-        mealType = in.readString();
+
         description = in.readString();
     }
 
@@ -100,13 +99,6 @@ public class FoodItem implements Parcelable {
         this.kcal = kcal;
     }
 
-    public String getMealType() {
-        return mealType;
-    }
-
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
-    }
 
     public String getDescription() {
         return description;
@@ -127,7 +119,6 @@ public class FoodItem implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(portionSize);
         parcel.writeDouble(kcal);
-        parcel.writeString(mealType);
         parcel.writeString(description);
     }
 }

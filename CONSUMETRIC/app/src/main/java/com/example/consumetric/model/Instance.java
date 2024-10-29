@@ -17,7 +17,6 @@ public class Instance {
             + FoodItem.COLUMN_NAME + " TEXT,"
             + FoodItem.COLUMN_PORTION_SIZE + " TEXT,"
             + FoodItem.COLUMN_KCAL + " REAL, "
-            + FoodItem.COLUMN_MEAL_TYPE + " TEXT, "
             + FoodItem.COLUMN_DESCRIPTION + " TEXT"
             + ")";
 
@@ -30,9 +29,21 @@ public class Instance {
             + ")";
 
 
+    public static final String CREATE_TABLE_USER = "CREATE TABLE " + User.TABLE_NAME + "("
+            + User.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + User.COLUMN_FIRST_NAME + " TEXT,"
+            + User.COLUMN_LAST_NAME + " TEXT,"
+            + User.COLUMN_BIRTH_DATE + " TEXT,"
+            + User.COLUMN_HEIGHT + " REAL,"
+            + User.COLUMN_WEIGHT + " REAL,"
+            + User.COLUMN_GENDER + " TEXT,"
+            + User.COLUMN_CALORIES + " REAL"
+            + ")";
+
+
     public static final String DROP_TABLE_MEAL_PLAN = "DROP TABLE IF EXISTS " + MealPlan.TABLE_NAME;
     public static final String DROP_TABLE_FOOD_ITEM = "DROP TABLE IF EXISTS " + FoodItem.TABLE_NAME;
     public static final String DROP_TABLE_MEAL_PLAN_FOOD_ITEM = "DROP TABLE IF EXISTS " + MealPlanFoodItem.TABLE_NAME;
-
+    public static final String DROP_TABLE_USER = "DROP TABLE IF EXISTS " + User.TABLE_NAME;
 
 }
