@@ -19,9 +19,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.epet.Model.Case;
+import com.example.epet.Model.MissingPet;
 import com.example.epet.Model.Pet;
 import com.example.epet.Model.User;
+import com.example.epet.api.PostTask;
 import com.example.epet.calback.GetCallback;
+import com.example.epet.calback.PostCallback;
 import com.example.epet.fragment.SettingFragment;
 import com.example.epet.fragment.CaseFragment;
 import com.example.epet.fragment.HomeFragment;
@@ -35,6 +38,8 @@ import com.google.gson.Gson;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -126,9 +131,34 @@ public class HeroActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     Gson gson = new Gson();
                     Pet pet = gson.fromJson(result.getContents(), Pet.class);
-                    Intent intent = new Intent(this, PetOwnerInformationActivity.class);
-                    intent.putExtra("pet", pet);
-                    startActivity(intent);
+
+                    try {
+                        JSONObject data = new JSONObject();
+
+                        data.put("pet_id", pet.getPetId());
+
+                        new PostTask(this, new PostCallback() {
+                            @Override
+                            public void onPostSuccess(String responseData) {
+
+                                MissingPet missingPet = gson.fromJson(responseData, MissingPet.class);
+                                Intent intent = new Intent(HeroActivity.this, FoundReportActivity.class);
+                                intent.putExtra("missingPet", missingPet);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onPostError(String errorMessage) {
+                                Intent intent = new Intent(HeroActivity.this, PetOwnerInformationActivity.class);
+                                intent.putExtra("pet", pet);
+                                startActivity(intent);
+                            }
+                        }, "Error", "retrieve-missing-pet-details.php").execute(data);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
                 }
             });
 

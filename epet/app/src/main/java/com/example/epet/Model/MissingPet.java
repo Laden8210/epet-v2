@@ -7,19 +7,43 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Pet implements Parcelable {
+public class MissingPet implements Parcelable {
 
     @SerializedName("id")
+    private int id;
+
+    @SerializedName("user_id")
+    private int userId;
+
+    @SerializedName("pet_id")
     private int petId;
 
-    @SerializedName("pet_owner_id")
-    private int ownerId;
+    @SerializedName("location")
+    private String location;
+
+    @SerializedName("report")
+    private String report;
+
+    @SerializedName("found_report")
+    private String foundReport;
+
+    @SerializedName("date")
+    private String date;
+
+    @SerializedName("time")
+    private String time;
+
+    @SerializedName("missing_image_path")
+    private String missingImagePath;
+
+    @SerializedName("created_at")
+    private String createdAt;
 
     @SerializedName("pet_name")
     private String petName;
 
     @SerializedName("age")
-    private int petAge;
+    private int age;
 
     @SerializedName("type")
     private String type;
@@ -48,18 +72,28 @@ public class Pet implements Parcelable {
     @SerializedName("image_path")
     private String imagePath;
 
-    @SerializedName("created_at")
-
-    private String createdAt;
+    @SerializedName("pet_owner_id")
+    private int petOwnerId;
 
     @SerializedName("pet_status")
     private String petStatus;
 
-    protected Pet(Parcel in) {
+    @SerializedName("missing_status")
+    private int missingStatus;
+
+    protected MissingPet(Parcel in) {
+        id = in.readInt();
+        userId = in.readInt();
         petId = in.readInt();
-        ownerId = in.readInt();
+        location = in.readString();
+        report = in.readString();
+        foundReport = in.readString();
+        date = in.readString();
+        time = in.readString();
+        missingImagePath = in.readString();
+        createdAt = in.readString();
         petName = in.readString();
-        petAge = in.readInt();
+        age = in.readInt();
         type = in.readString();
         breed = in.readString();
         color = in.readString();
@@ -69,16 +103,25 @@ public class Pet implements Parcelable {
         height = in.readString();
         gender = in.readString();
         imagePath = in.readString();
-        createdAt = in.readString();
+        petOwnerId = in.readInt();
         petStatus = in.readString();
+        missingStatus = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(userId);
         dest.writeInt(petId);
-        dest.writeInt(ownerId);
+        dest.writeString(location);
+        dest.writeString(report);
+        dest.writeString(foundReport);
+        dest.writeString(date);
+        dest.writeString(time);
+        dest.writeString(missingImagePath);
+        dest.writeString(createdAt);
         dest.writeString(petName);
-        dest.writeInt(petAge);
+        dest.writeInt(age);
         dest.writeString(type);
         dest.writeString(breed);
         dest.writeString(color);
@@ -88,8 +131,9 @@ public class Pet implements Parcelable {
         dest.writeString(height);
         dest.writeString(gender);
         dest.writeString(imagePath);
-        dest.writeString(createdAt);
+        dest.writeInt(petOwnerId);
         dest.writeString(petStatus);
+        dest.writeInt(missingStatus);
     }
 
     @Override
@@ -97,17 +141,33 @@ public class Pet implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Pet> CREATOR = new Creator<Pet>() {
+    public static final Creator<MissingPet> CREATOR = new Creator<MissingPet>() {
         @Override
-        public Pet createFromParcel(Parcel in) {
-            return new Pet(in);
+        public MissingPet createFromParcel(Parcel in) {
+            return new MissingPet(in);
         }
 
         @Override
-        public Pet[] newArray(int size) {
-            return new Pet[size];
+        public MissingPet[] newArray(int size) {
+            return new MissingPet[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getPetId() {
         return petId;
@@ -117,12 +177,60 @@ public class Pet implements Parcelable {
         this.petId = petId;
     }
 
-    public int getOwnerId() {
-        return ownerId;
+    public String getLocation() {
+        return location;
     }
 
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
+    }
+
+    public String getFoundReport() {
+        return foundReport;
+    }
+
+    public void setFoundReport(String foundReport) {
+        this.foundReport = foundReport;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getMissingImagePath() {
+        return missingImagePath;
+    }
+
+    public void setMissingImagePath(String missingImagePath) {
+        this.missingImagePath = missingImagePath;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getPetName() {
@@ -133,12 +241,12 @@ public class Pet implements Parcelable {
         this.petName = petName;
     }
 
-    public int getPetAge() {
-        return petAge;
+    public int getAge() {
+        return age;
     }
 
-    public void setPetAge(int petAge) {
-        this.petAge = petAge;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getType() {
@@ -213,12 +321,12 @@ public class Pet implements Parcelable {
         this.imagePath = imagePath;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public int getPetOwnerId() {
+        return petOwnerId;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setPetOwnerId(int petOwnerId) {
+        this.petOwnerId = petOwnerId;
     }
 
     public String getPetStatus() {
@@ -227,5 +335,13 @@ public class Pet implements Parcelable {
 
     public void setPetStatus(String petStatus) {
         this.petStatus = petStatus;
+    }
+
+    public int getMissingStatus() {
+        return missingStatus;
+    }
+
+    public void setMissingStatus(int missingStatus) {
+        this.missingStatus = missingStatus;
     }
 }

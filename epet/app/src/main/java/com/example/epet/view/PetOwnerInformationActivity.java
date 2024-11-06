@@ -54,34 +54,34 @@ public class PetOwnerInformationActivity extends AppCompatActivity implements Po
 
         pet = getIntent().getParcelableExtra("pet");
 
-//        if (pet != null) {
-//            if (pet.getPetUrlImage() != null) {
-//                String url = (ApiAddress.url + "uploads/" + pet.getPetUrlImage()).replace(" ", "");
-//                Glide.with(ivPet.getContext())
-//                        .load(url)
-//                        .into(ivPet);
-//            } else {
-//                ivPet.setImageResource(R.drawable.logo);
-//            }
-//
-//            tvPetName.setText(pet.getPetName());
-//            tvWeight.setText(pet.getWeight());
-//            tvBreed.setText(pet.getBreed());
-//            tvDob.setText(pet.getDob());
-//            tvGender.setText(pet.getGender());
-//            tvMedical.setText(pet.getMedical());
-//
-//            String postData = null;
-//            try {
-//                postData = "user_id=" + URLEncoder.encode(String.valueOf(pet.getUserId()), "UTF-8");
-//                String errorMessage = "";
-//
-//
-//            } catch (UnsupportedEncodingException e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//        }
+        if (pet != null) {
+            if (pet.getImagePath() != null) {
+                String url = (ApiAddress.urlImage + pet.getImagePath()).replace(" ", "");
+                Glide.with(ivPet.getContext())
+                        .load(url)
+                        .into(ivPet);
+            } else {
+                ivPet.setImageResource(R.drawable.logo);
+            }
+
+            tvPetName.setText(pet.getPetName());
+            tvWeight.setText(pet.getWeight());
+            tvBreed.setText(pet.getBreed());
+
+            tvGender.setText(pet.getGender());
+
+
+            String postData = null;
+            try {
+                postData = "user_id=" + URLEncoder.encode(String.valueOf(pet.getOwnerId()), "UTF-8");
+                String errorMessage = "";
+
+
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
     }
 
     @Override

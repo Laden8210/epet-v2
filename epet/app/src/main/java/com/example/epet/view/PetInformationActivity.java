@@ -37,27 +37,26 @@ import java.io.OutputStream;
 
 public class PetInformationActivity extends AppCompatActivity {
 
-    private TextView tvPetName, tvWeight, tvBreed, tvDob, tvGender, tvMedical;
-    private ImageView ivPet;
-    private ImageView ivQrCode;
-    private Button btnEdit;
-    private Button btnQrCodeDownload;
-    private String petName;
+    private TextView tvPetName, tvWeight, tvHeight, tvBreed, tvDob, tvGender;
+    private ImageView ivPet, ivQrCode;
+    private Button btnEdit, btnQrCodeDownload;
     private Pet pet;
 
     private static final int PERMISSION_REQUEST_CODE = 100;
+    private String petName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_information);
 
+        // Initialize views
         tvPetName = findViewById(R.id.tv_pet_name);
         tvWeight = findViewById(R.id.tv_weight);
+        tvHeight = findViewById(R.id.tv_height); // Ensure this is initialized
         tvBreed = findViewById(R.id.tv_breed);
         tvDob = findViewById(R.id.tv_dob);
         tvGender = findViewById(R.id.tv_gender);
-        tvMedical = findViewById(R.id.tv_medical);
         ivPet = findViewById(R.id.iv_pet);
         ivQrCode = findViewById(R.id.iv_pet_qr);
         btnEdit = findViewById(R.id.btn_edit);
@@ -68,22 +67,22 @@ public class PetInformationActivity extends AppCompatActivity {
 
         pet = getIntent().getParcelableExtra("pet");
 
+
         if (pet != null) {
-            if (pet.getImage() != null) {
-                String url = (ApiAddress.url + "uploads/" + pet.getImage()).replace(" ", "");
-                Glide.with(ivPet.getContext())
-                        .load(url)
-                        .into(ivPet);
+            if (pet.getImagePath() != null) {
+                String url = (ApiAddress.urlImage + pet.getImagePath()).replace(" ", "");
+                Glide.with(ivPet.getContext()).load(url).into(ivPet);
             } else {
                 ivPet.setImageResource(R.drawable.logo);
             }
 
+
             tvPetName.setText(pet.getPetName());
-
+            tvWeight.setText(String.valueOf(pet.getWeight()));
+            tvHeight.setText(String.valueOf(pet.getHeight()));
             tvBreed.setText(pet.getBreed());
-
+            tvDob.setText(pet.getBirthdate());
             tvGender.setText(pet.getGender());
-
             petName = pet.getPetName();
 
             generateQrCode(pet);

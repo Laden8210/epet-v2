@@ -55,6 +55,8 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder> {
 
         holder.tvPetName.setText(pet.getPetName());
 
+        Glide.with(context).load(ApiAddress.urlImage + pet.getImagePath()).into(holder.ivPet);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_spinner_item, new ArrayList<>(List.of("De", "Missing")));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -84,24 +86,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder> {
 
             popup.show();
         });
-//        String url = (ApiAddress.url + "uploads/" + pet.getImage()).replace(" ", "");
-//
-//        Log.d(url ,url.trim());
-//
-//        if (pet.getImage() != null) {
-//
-//            Glide.with(holder.ivPet.getContext())
-//                    .load(url)
-//                    .into(holder.ivPet);
-//        } else {
-//            holder.ivPet.setImageResource(R.drawable.logo);
-//        }
-//
-//        holder.cardView.setOnClickListener(e ->{
-//            Intent intent = new Intent(context, PetInformationActivity.class);
-//            intent.putExtra("pet", pet);
-//            context.startActivity(intent);
-//        });
+
 
     }
 
@@ -121,7 +106,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardView);
-            ivPet = itemView.findViewById(R.id.iv_pet);
+            ivPet = itemView.findViewById(R.id.iv_pet_image);
             tvPetName = itemView.findViewById(R.id.tv_pet_name);
             btnMenu = itemView.findViewById(R.id.btn_menu);
         }

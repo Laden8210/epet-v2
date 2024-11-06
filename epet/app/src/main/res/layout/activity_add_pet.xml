@@ -17,6 +17,19 @@
         android:orientation="vertical"
         android:padding="12dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:scaleType="center"
+                android:src="@drawable/image_icon"/>
+
+        </androidx.cardview.widget.CardView>
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,7 +38,7 @@
             <TableRow>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/houseNumber"
+                    android:id="@+id/petname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
@@ -40,7 +53,7 @@
 
 
                 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                    android:id="@+id/brgyId"
+                    android:id="@+id/uploadImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Upload a photo"
@@ -63,28 +76,10 @@
                         android:hint="Age" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_margin="4dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Type of pet" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-            </TableRow>
-
-
-            <TableRow>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/breed"
+                    android:id="@+id/birthdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
@@ -93,16 +88,26 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Breed" />
+                        android:hint="Birthdate" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            </TableRow>
+
+            <TableRow>
+
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
+                    android:layout_column="0"
                     android:layout_margin="4dp">
+
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -112,25 +117,90 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_margin="4dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Type of pet" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+            </TableRow>
+
+            <TableRow>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner"
+                    android:layout_column="0"
+                    android:layout_margin="4dp">
+
+                    <Spinner
+                        android:id="@+id/sp_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/breed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Breed" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </TableRow>
 
 
+            <TableRow>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Weight" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Height" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </TableRow>
+
+
+
         </TableLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/spinner"
-            android:layout_column="1"
-            android:layout_margin="4dp">
-
-            <Spinner
-                android:id="@+id/sp_gender"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -146,25 +216,6 @@
                 android:hint="Breed Description" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <RadioGroup
-            android:id="@+id/ageType"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/years"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Years" />
-
-            <RadioButton
-                android:id="@+id/months"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Months" />
-        </RadioGroup>
 
         <Button
             android:id="@+id/addPet"

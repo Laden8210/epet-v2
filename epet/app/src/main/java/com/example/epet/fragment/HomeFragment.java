@@ -9,10 +9,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.epet.Model.MissingPet;
 import com.example.epet.R;
 import com.example.epet.adapter.CardMissingPetAdapter;
+import com.example.epet.api.PostTask;
 import com.example.epet.calback.GetCallback;
 import com.example.epet.calback.PostCallback;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment implements GetCallback, PostCallback {
 
@@ -27,10 +35,7 @@ public class HomeFragment extends Fragment implements GetCallback, PostCallback 
         rvMissingPet = view.findViewById(R.id.rvMissingPet);
         rvMissingPet.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-        cardMissingPet = new CardMissingPetAdapter();
-
-        rvMissingPet.setAdapter(cardMissingPet);
+        new PostTask(getContext(), this, "missing_pet", "retrieve-report.php").execute(new JSONObject());
 
         return view;
     }
@@ -48,6 +53,14 @@ public class HomeFragment extends Fragment implements GetCallback, PostCallback 
 
     @Override
     public void onPostSuccess(String responseData) {
+        Gson gson = new Gson();
+        List<MissingPet> missingPetList = gson.fromJson(responseData, new TypeToken<List<MissingPet>>(){}.getType());
+
+        cardMissingPet = new CardMissingPetAdapter(getContext(), missingPetList);
+        rvMissingPet.setAdapter(cardMissingPet);
+
+
+
 
     }
 
